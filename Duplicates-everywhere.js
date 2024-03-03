@@ -63,3 +63,18 @@ Example 3:
 
 
 // Solution
+
+const removeDuplicateIds = (obj) => {
+  const res = {};
+  const ks = Object.keys(obj).sort((a, b) => b - a);
+  const seen = new Set();
+  for (const k of ks) {
+    res[k] = [];
+    for (const v of obj[k]) {
+      if (!seen.has(v))
+        res[k].push(v);
+      seen.add(v);
+    }
+  }
+  return res;
+};
